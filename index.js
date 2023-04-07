@@ -4,6 +4,11 @@ const titansSection = document.getElementById('titans')
 const verMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
 
+const moveRigthBtn = document.getElementById('moveRigth')
+const moveLeftBtn = document.getElementById('moveLeft')
+const moveUpBtn = document.getElementById('moveUp')
+const moveDownBtn = document.getElementById('moveDown')
+
 let interval
 
 class Titan {
@@ -73,14 +78,13 @@ const selectFunction = () => {
         characterSelection.style.display = 'none'
         verMapa.style.display = 'flex'
         console.log(titanSelected)
-        //drawCharacter()
+        drawCharacter()
         interval = setInterval(drawCharacter, 50) //se caragará un intervalo que se usará
     }
 }
 
 const moveRigth = () => {
     titanSelected.velocidadX = 5
-    console.log('hola')
 }
 
 const moveLeft = () => {
@@ -88,11 +92,11 @@ const moveLeft = () => {
 }
 
 const moveUp = () => {
-    titanSelected.velocidadY = 5
+    titanSelected.velocidadY = -5
 }
 
 const moveDown = () => {
-    titanSelected.velocidadY = -5
+    titanSelected.velocidadY = 5
 }
 
 const stopMove = () => {
@@ -100,4 +104,15 @@ const stopMove = () => {
     titanSelected.velocidadY = 0
 }
 
+moveRigthBtn.onmousedown = moveRigth
+moveRigthBtn.onmouseup = stopMove
+
+moveLeftBtn.onmousedown = moveLeft
+moveLeftBtn.onmouseup = stopMove
+
+moveUpBtn.onmousedown = moveUp
+moveUpBtn.onmouseup = stopMove
+
+moveDownBtn.onmousedown = moveDown
+moveDownBtn.onmouseup = stopMove
 
